@@ -1,0 +1,373 @@
+@charset "utf-8";
+
+// less库
+@import "less/z";
+// 公用的变量
+@import "arg";
+
+.reset();
+
+@teamBox_width: 175px;
+@teamBox_height: 175px;
+@teamBox_borderRadius: 50%;
+
+@teamName_height: 50px;
+@teamName_fontSize: 32px;
+
+@li_translateX: -180px;
+@li_translateY: -180px;
+
+.teamBox_border(@border_width) {
+	border: @border_width solid #fff;
+}
+#bg {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	height: 100%;
+	width: 100%;
+}
+#teamBox {
+	width: @teamBox_width;
+	height: @teamBox_height;
+	border-radius: @teamBox_borderRadius;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -@teamBox_width/2;
+	margin-top: -@teamBox_height/2;
+	.teamBox_border(5px);
+}
+.teamName {
+	position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    line-height: @teamName_height;
+    height: @teamName_height;
+    font-size: @teamName_fontSize;
+    text-align: center;
+    font-weight: bold;
+}
+.teamList {
+	position: absolute;
+	transform: translate(@teamBox_width/2, @teamBox_height/2);
+	-webkit-transform: translate(@teamBox_width/2, @teamBox_height/2);
+	-moz-transform: translate(@teamBox_width/2, @teamBox_height/2);
+	-ms-transform: translate(@teamBox_width/2, @teamBox_height/2);
+	width: 0;
+	height: 0;
+	// background-color: #000;
+}
+.teamList_li(@transform_rot) {
+	@width: 100px;
+	@height: 300px;
+	width: @width;
+    height: @height;
+    // background: #000;
+    position: absolute;
+    top: -@height;
+	left: -@width/2;
+	transform-origin: 50% 100%;
+	-webkit-transform-origin: 50% 100%;
+	-moz-transform-origin: 50% 100%;
+	-ms-transform-origin: 50% 100%;
+	transform: rotate(@transform_rot);
+	-webkit-transform: rotate(@transform_rot);
+	-moz-transform: rotate(@transform_rot);
+	-ms-transform: rotate(@transform_rot);
+	.avatar {
+		@height: 100px;
+		@border_width: 3px;
+		width: @width - 2*@border_width;
+		background: #fff;
+		height: @height - 2*@border_width;
+		border-radius: 50%;
+		-webkit-border-radius: 50%;
+		-moz-border-radius: 50%;
+		-ms-border-radius: 50%;
+		.teamBox_border(@border_width);
+	}
+}
+
+.teamList li:nth-child(1) {
+	.teamList_li(0deg);
+	animation: rotation_1 1.5s ease 1;
+	-webkit-animation: rotation_1 1.5s ease 1;
+	-moz-animation: rotation_1 1.5s ease 1;
+	-ms-animation: rotation_1 1.5s ease 1;
+}
+.teamList li:nth-child(2) {
+	.teamList_li(72deg);
+	animation: rotation_2 1.5s ease 1;
+	-webkit-animation: rotation_2 1.5s ease 1;
+	-moz-animation: rotation_2 1.5s ease 1;
+	-ms-animation: rotation_2 1.5s ease 1;
+}
+.teamList li:nth-child(3) {
+	.teamList_li(144deg);
+	animation: rotation_3 1.5s ease 1;
+	-webkit-animation: rotation_3 1.5s ease 1;
+	-moz-animation: rotation_3 1.5s ease 1;
+	-ms-animation: rotation_3 1.5s ease 1;
+}
+.teamList li:nth-child(4) {
+	.teamList_li(216deg);
+	animation: rotation_4 1.5s ease 1;
+	-webkit-animation: rotation_4 1.5s ease 1;
+	-moz-animation: rotation_4 1.5s ease 1;
+	-ms-animation: rotation_4 1.5s ease 1;
+}
+.teamList li:nth-child(5) {
+	.teamList_li(288deg);
+	animation: rotation_5 1.5s ease 1;
+	-webkit-animation: rotation_5 1.5s ease 1;
+	-moz-animation: rotation_5 1.5s ease 1;
+	-ms-animation: rotation_5 1.5s ease 1;
+}
+@teamList_li_top: -300px;
+@keyframes rotation_1 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(-72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(0deg);
+	}
+}
+@-moz-keyframes rotation_1 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(-72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(0deg);
+	}
+}
+@-webkit-keyframes rotation_1 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(-72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(0deg);
+	}
+}
+@-ms-keyframes rotation_1 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(-72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(0deg);
+	}
+}
+@keyframes rotation_2 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(0deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(72deg);
+	}
+}
+@-moz-keyframes rotation_2 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(0deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(72deg);
+	}
+}
+@-webkit-keyframes rotation_2 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(0deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(72deg);
+	}
+}
+@-ms-keyframes rotation_2 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(0deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(72deg);
+	}
+}
+@keyframes rotation_3 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(144deg);
+	}
+}
+@-webkit-keyframes rotation_3 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(144deg);
+	}
+}
+@-moz-keyframes rotation_3 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(144deg);
+	}
+}
+@-ms-keyframes rotation_3 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(72deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(144deg);
+	}
+}
+@keyframes rotation_4 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(144deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(216deg);
+	}
+}
+@-moz-keyframes rotation_4 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(144deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(216deg);
+	}
+}
+@-webkit-keyframes rotation_4 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(144deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(216deg);
+	}
+}
+@-ms-keyframes rotation_4 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(144deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(216deg);
+	}
+}
+
+@keyframes rotation_5 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(216deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(288deg);
+	}
+}
+@-moz-keyframes rotation_5 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(216deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(288deg);
+	}
+}
+@-webkit-keyframes rotation_5 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(216deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(288deg);
+	}
+}
+@-ms-keyframes rotation_5 {
+	from {
+		top: 0;
+		height: 0;
+		transform: rotate(216deg);
+	}
+	to {
+		top: @teamList_li_top;
+		height: - @teamList_li_top;
+		transform: rotate(288deg);
+	}
+}

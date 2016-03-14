@@ -1,0 +1,452 @@
+@charset "utf-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+img {
+  border: none;
+}
+input,
+select,
+textarea {
+  outline: none;
+  border: none;
+  background: none;
+}
+textarea {
+  resize: none;
+}
+a {
+  text-decoration: none;
+}
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+#teamBox {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -87.5px;
+  margin-top: -87.5px;
+  border: 5px solid #ffffff;
+}
+.teamName {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  line-height: 50px;
+  height: 50px;
+  font-size: 32px;
+  text-align: center;
+  font-weight: bold;
+}
+.teamList {
+  position: absolute;
+  transform: translate(87.5px, 87.5px);
+  -webkit-transform: translate(87.5px, 87.5px);
+  -moz-transform: translate(87.5px, 87.5px);
+  -ms-transform: translate(87.5px, 87.5px);
+  width: 0;
+  height: 0;
+}
+.teamList li:nth-child(1) {
+  width: 100px;
+  height: 300px;
+  position: absolute;
+  top: -300px;
+  left: -50px;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  animation: rotation_1 1.5s ease 1;
+  -webkit-animation: rotation_1 1.5s ease 1;
+  -moz-animation: rotation_1 1.5s ease 1;
+  -ms-animation: rotation_1 1.5s ease 1;
+}
+.teamList li:nth-child(1) .avatar {
+  width: 94px;
+  background: #fff;
+  height: 94px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border: 3px solid #ffffff;
+}
+.teamList li:nth-child(2) {
+  width: 100px;
+  height: 300px;
+  position: absolute;
+  top: -300px;
+  left: -50px;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform: rotate(72deg);
+  -webkit-transform: rotate(72deg);
+  -moz-transform: rotate(72deg);
+  -ms-transform: rotate(72deg);
+  animation: rotation_2 1.5s ease 1;
+  -webkit-animation: rotation_2 1.5s ease 1;
+  -moz-animation: rotation_2 1.5s ease 1;
+  -ms-animation: rotation_2 1.5s ease 1;
+}
+.teamList li:nth-child(2) .avatar {
+  width: 94px;
+  background: #fff;
+  height: 94px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border: 3px solid #ffffff;
+}
+.teamList li:nth-child(3) {
+  width: 100px;
+  height: 300px;
+  position: absolute;
+  top: -300px;
+  left: -50px;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform: rotate(144deg);
+  -webkit-transform: rotate(144deg);
+  -moz-transform: rotate(144deg);
+  -ms-transform: rotate(144deg);
+  animation: rotation_3 1.5s ease 1;
+  -webkit-animation: rotation_3 1.5s ease 1;
+  -moz-animation: rotation_3 1.5s ease 1;
+  -ms-animation: rotation_3 1.5s ease 1;
+}
+.teamList li:nth-child(3) .avatar {
+  width: 94px;
+  background: #fff;
+  height: 94px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border: 3px solid #ffffff;
+}
+.teamList li:nth-child(4) {
+  width: 100px;
+  height: 300px;
+  position: absolute;
+  top: -300px;
+  left: -50px;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform: rotate(216deg);
+  -webkit-transform: rotate(216deg);
+  -moz-transform: rotate(216deg);
+  -ms-transform: rotate(216deg);
+  animation: rotation_4 1.5s ease 1;
+  -webkit-animation: rotation_4 1.5s ease 1;
+  -moz-animation: rotation_4 1.5s ease 1;
+  -ms-animation: rotation_4 1.5s ease 1;
+}
+.teamList li:nth-child(4) .avatar {
+  width: 94px;
+  background: #fff;
+  height: 94px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border: 3px solid #ffffff;
+}
+.teamList li:nth-child(5) {
+  width: 100px;
+  height: 300px;
+  position: absolute;
+  top: -300px;
+  left: -50px;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-transform-origin: 50% 100%;
+  -ms-transform-origin: 50% 100%;
+  transform: rotate(288deg);
+  -webkit-transform: rotate(288deg);
+  -moz-transform: rotate(288deg);
+  -ms-transform: rotate(288deg);
+  animation: rotation_5 1.5s ease 1;
+  -webkit-animation: rotation_5 1.5s ease 1;
+  -moz-animation: rotation_5 1.5s ease 1;
+  -ms-animation: rotation_5 1.5s ease 1;
+}
+.teamList li:nth-child(5) .avatar {
+  width: 94px;
+  background: #fff;
+  height: 94px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  border: 3px solid #ffffff;
+}
+@keyframes rotation_1 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(-72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(0deg);
+  }
+}
+@-moz-keyframes rotation_1 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(-72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes rotation_1 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(-72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(0deg);
+  }
+}
+@-ms-keyframes rotation_1 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(-72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(0deg);
+  }
+}
+@keyframes rotation_2 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(0deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(72deg);
+  }
+}
+@-moz-keyframes rotation_2 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(0deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(72deg);
+  }
+}
+@-webkit-keyframes rotation_2 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(0deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(72deg);
+  }
+}
+@-ms-keyframes rotation_2 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(0deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(72deg);
+  }
+}
+@keyframes rotation_3 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(144deg);
+  }
+}
+@-webkit-keyframes rotation_3 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(144deg);
+  }
+}
+@-moz-keyframes rotation_3 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(144deg);
+  }
+}
+@-ms-keyframes rotation_3 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(72deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(144deg);
+  }
+}
+@keyframes rotation_4 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(144deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(216deg);
+  }
+}
+@-moz-keyframes rotation_4 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(144deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(216deg);
+  }
+}
+@-webkit-keyframes rotation_4 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(144deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(216deg);
+  }
+}
+@-ms-keyframes rotation_4 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(144deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(216deg);
+  }
+}
+@keyframes rotation_5 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(216deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(288deg);
+  }
+}
+@-moz-keyframes rotation_5 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(216deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(288deg);
+  }
+}
+@-webkit-keyframes rotation_5 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(216deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(288deg);
+  }
+}
+@-ms-keyframes rotation_5 {
+  from {
+    top: 0;
+    height: 0;
+    transform: rotate(216deg);
+  }
+  to {
+    top: -300px;
+    height: - -300px;
+    transform: rotate(288deg);
+  }
+}
