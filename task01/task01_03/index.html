@@ -24,6 +24,8 @@
 			overflow: hidden;
 			min-width: 800px;
 			background-color: #eee;
+			display: inline-block; /* 用来触发IE的hasLayout */
+    		display: block; /* 覆盖上一条属性，重新设置为block */
 		}
 		.left_box {
 			float: left;
@@ -88,5 +90,6 @@
 			<p>关于的团队的介绍</p>
 		</div>
 	</div>
+	<div class="box"></div>
 </body>
 </html>
