@@ -16,3 +16,6 @@
 5. 任务五：零基础HTML及CSS编码（二）
     代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task01/task01_05](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task01/task01_05);
     DEMO：[http://zhongshan1993.github.io/myIFE/task01/task01_05/](http://zhongshan1993.github.io/myIFE/task01/task01_05/)
+6. 任务六：通过HTML及CSS模拟报纸排版
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task01/task01_06](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task01/task01_06);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task01/task01_06/](http://zhongshan1993.github.io/myIFE/task01/task01_06/)
