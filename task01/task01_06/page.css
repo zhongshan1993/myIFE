@@ -354,7 +354,7 @@ font: 72px SimHei;
 #footer {
 	border-top: 2px solid #938e8c;
 	width: 892px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 #footer p {
 	text-align: right;
