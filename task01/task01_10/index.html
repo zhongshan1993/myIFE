@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度前端任务01_10</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		body {
+			padding: 20px;
+		}
+		ul {
+			list-style: none;
+		}
+		.container {
+			display: flex;
+			padding: 20px;
+			
+			/* height: 300px; */
+			border: 1px solid #999;
+		}
+		.container .item {
+			border: 1px solid #f00;
+			width: 150px;
+			height: 120px;
+			margin-bottom: 15px;
+		}
+		.container .item:nth-child(2) {
+			height: 100px;
+		}
+		.container .item:nth-child(3) {
+			height: 40px;
+		}
+		.container .item:last-child {
+			border: 1px solid #00f;
+			height: 200px;
+		}
+		@media all and (min-width: 641px) {
+			.container {
+				align-items: center;
+				justify-content: space-between;
+			}
+		}
+		@media all and (max-width: 640px) {
+			.container {
+				align-items: flex-start;
+				justify-content: space-between;
+				flex-flow: row wrap;
+			}
+			.container .item:last-child {
+				order: -1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<ul class="container">
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+		<li class="item"></li>
+	</ul>
+</body>
+</html>
