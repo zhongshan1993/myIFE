@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>百度前端任务01_12</title>
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body {
+			font: 20px 'Microsoft YaHei';
+		}
+		table {
+			/* border: 1px solid #000; */
+			width: 300px;
+			margin: 0 auto;
+		}
+		ul {
+			list-style: none;
+		}
+		table td {
+			border: 1px solid #fff;
+		}
+		table thead tr {
+			color: #fff;
+			background-color: #000;
+		}
+		table tbody tr:nth-child(even) {
+			background-color: #ccc;
+		}
+		table tbody tr:nth-child(1), table tr:nth-child(2), table tr:nth-child(3) {
+			color: red;
+		}
+		input {
+			width: 150px;
+			margin: 30px auto;
+			display: block;
+			transition: width 1s;
+			-webkit-transition: width 1s;
+			-o-transition: width 1s;
+			-moz-transition: width 1s;
+		}
+		input:focus {
+			box-shadow: 0 0 2px 2px green;
+			-webkit-box-shadow: 0 0 2px 2px green;
+			-moz-box-shadow: 0 0 2px 2px green;
+			-o-box-shadow: 0 0 2px 2px green;
+			outline: none;
+			width: 200px;
+		}
+
+		.slide {
+			width: 300px;
+			height: 200px;
+			margin: 30px auto;
+			overflow: hidden;
+			position: relative;
+		}
+		.slide .pic {
+			width: 300px;
+			height: 200px;
+			position: relative;
+		}
+		.slide .pic li {
+			position: absolute;
+			display: inline-block;
+			width: 300px;
+			height: 200px;
+			z-index: -1;
+			transition: z-index ;
+			-webkit-transition: z-index ;
+			-moz-transition: z-index ;
+			-o-transition: z-index ;
+
+		}
+		.slide .pic li:target {
+			z-index: 1;
+			animation: slide 1s 1;
+		}
+		.slide .pic li:nth-child(1) {
+			background-color: #f00;
+		}
+		.slide .pic li:nth-child(2) {
+			background-color: #0f0;
+		}
+		.slide .pic li:nth-child(3) {
+			background-color: #00f;
+		}
+		.slide .handler {
+			position: absolute;
+			right: 5px;
+			bottom: 5px;
+			z-index: 999;
+		}
+		.slide .handler a {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			background-color: rgba(255, 255, 255, .4);
+			text-align: center;
+			cursor: pointer;
+			color: #fff;
+			text-decoration: none;
+		}
+		@keyframes slide {
+			from {
+				width: 0;
+			}
+			to {
+				width: 300px;
+			}
+		}
+		@-webkit-keyframes slide {
+			from {
+				width: 0;
+			}
+			to {
+				width: 300px;
+			}
+		}
+		@-o-keyframes slide {
+			from {
+				width: 0;
+			}
+			to {
+				width: 300px;
+			}
+		}
+		@-moz-keyframes slide {
+			from {
+				width: 0;
+			}
+			to {
+				width: 300px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<table cellspacing="0">
+		<thead>
+			<tr>
+				<td>排名</td>
+				<td>网站</td>
+				<td>热度</td>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>2.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>3.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>4.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>5.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>6.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>7.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>8.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>9.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+			<tr>
+				<td>10.</td>
+				<td>百度前端学院</td>
+				<td>13000</td>
+			</tr>
+		</tbody>
+	</table>
+	<input type="text">
+	<div class="slide">
+		<ul class="pic">
+			<li id="pic1"></li><li id="pic2"></li><li id="pic3"></li>
+		</ul>
+		<ul class="handler">
+			<a href="#pic1">1</a>
+			<a href="#pic2">2</a>
+			<a href="#pic3">3</a>
+		</ul>
+	</div>
+</body>
+</html>

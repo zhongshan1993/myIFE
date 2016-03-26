@@ -628,7 +628,7 @@ body {
 }
 .footer .headline .contact_method {
 	text-align: center;
-
+	margin-bottom: 70px;
 }
 .footer .headline .contact_method li {
 	display: inline-block;
