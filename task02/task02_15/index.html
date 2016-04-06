@@ -97,11 +97,20 @@ function init() {
 
   // 在这下面给sort-btn绑定一个点击事件，点击时触发btnHandle函数
   var oSortBtn = document.getElementById('sort-btn');
-  oSortBtn.onclick = function() {
+  addEvent(oSortBtn, "click", function() {
     btnHandle();
-  }
+  })
 }
 
+function addEvent(element, type, handler) {
+  if (element.addEventListener) {
+    element.addEventListener(type, handler, false);
+  } else if (element.attachEvent) {
+    element.attachEvent("on"+type, handler);
+  } else {
+    element["on"+type] = handler;
+  }
+}
 init();
 
 </script>
