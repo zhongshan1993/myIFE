@@ -99,6 +99,7 @@ function init() {
   var oSortBtn = document.getElementById('sort-btn');
   addEvent(oSortBtn, "click", function() {
     btnHandle();
+    oSortBtn.disabled = true;
   })
 }
 
