@@ -1,0 +1,59 @@
+<!DOCTYPE>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>百度前端任务02_19</title>
+    <script src="task.js"></script>
+    <style type="text/css">
+      .aqi-chart {
+        position: relative;
+        margin: 30px auto;
+        height: 600px;
+        width: 800px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+      #aqi-chart-wrap {
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+      }
+      #aqi-chart-wrap  .bar{
+        display: inline-block;
+        vertical-align: bottom;
+        margin-left: 3px;
+      }
+      #form {
+        width: 800px;
+        margin: 0 auto;
+        box-sizing: border-box;
+      }
+      .input-box{
+        text-align: center;
+      }
+      #sort-button {
+        /* border: 0; */
+        background-color: skyblue;
+      }
+    </style>
+  </head>
+<body>
+  <fieldset id="form">
+    <legend>表单输入</legend>
+    <div class="input-box">
+      <input type="text" id="input-value">
+      <button id="left-in">左侧入</button>
+      <button id="right-in">右侧入</button>
+      <button id="left-out">左侧出</button>
+      <button id="right-out">右侧出</button>|
+      <button id="sort-button">排序</button>
+    </div>
+  </fieldset>
+  
+  <div class="aqi-chart">
+    <div id="aqi-chart-wrap"></div>
+  </div>
+ 
+</body>
+</html>
