@@ -36,3 +36,19 @@
 12. 任务十二：学习CSS 3的新特性
     代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task01/task01_12](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task01/task01_12);
     DEMO：[http://zhongshan1993.github.io/myIFE/task01/task01_12/](http://zhongshan1993.github.io/myIFE/task01/task01_12/)  
+***
+13. 任务十三：零基础JavaScript编码（一）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_13](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_13);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_13/](http://zhongshan1993.github.io/myIFE/task02/task02_13/)  
+14. 任务十四：零基础JavaScript编码（二）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_14](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_14);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_14/](http://zhongshan1993.github.io/myIFE/task02/task02_14/)  
+15. 任务十五：零基础JavaScript编码（三）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_15](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_15);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_15/](http://zhongshan1993.github.io/myIFE/task02/task02_15/)  
+16. 任务十六：零基础JavaScript编码（四）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_16](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_16);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_16/](http://zhongshan1993.github.io/myIFE/task02/task02_16/)  
+17. 任务十七：零基础JavaScript编码（五）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_17](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_17);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_17/](http://zhongshan1993.github.io/myIFE/task02/task02_17/)  

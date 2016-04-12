@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度前端任务02_18</title>
+  <style type="text/css">
+    .display-box {
+      margin-top: 5px;
+    }
+    .display-box div{
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      background-color: red;
+      display: inline-block;
+      border-radius: 3px;
+      vertical-align: top;
+      margin-left: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-box">
+    <input type="text" id="input-value">
+    <button id="left-in">左侧入</button>
+    <button id="right-in">右侧入</button>
+    <button id="left-out">左侧出</button>
+    <button id="right-out">右侧出</button>
+  </div>
+  <div class="display-box" id="display-box">
+  </div>
+
+  <script>
+    var aQueue = [10, 3, 7, 12, 11, 30];
+        leftIn = document.getElementById('left-in'),
+        leftOut = document.getElementById('left-out'),
+        rightIn = document.getElementById('right-in'),
+        rightOut = document.getElementById('right-out'),
+        inputValue = document.getElementById('input-value'),
+        displayBox = document.getElementById('display-box');
+    // 渲染
+    function render() {
+      displayBox.innerHTML = "";
+      for (var i=0,len=aQueue.length; i < len; i++) {
+        displayBox.innerHTML += "<div>"+aQueue[i]+"</div>";
+      }
+    }
+    function init() {
+      addEvent(leftIn, 'click', function() {
+        var val = inputValue.value;
+        if (!validateNum(val)) {
+          alert("请输入数字！");
+        } else {
+          aQueue.unshift(val);
+        }
+        render();
+      });
+      addEvent(leftOut, 'click', function() {
+        alert(aQueue[0]);
+        aQueue.shift();
+        render();
+      });
+      addEvent(rightIn, 'click', function() {
+        var val = inputValue.value;
+        if (!validateNum(val)) {
+          alert("请输入数字！");
+        } else {
+          aQueue.push(val);
+        }
+        render();
+      });
+      addEvent(rightOut, 'click', function() {
+        alert(aQueue[aQueue.length-1]);
+        aQueue.pop();
+        render();
+      });
+    }
+    function validateNum(value) {
+      var reg = new RegExp("^[0-9]*$");
+      if (!reg.test(value)) {
+        return false;
+      }
+      return true;
+    }
+    function addEvent(element, type, handler) {
+      if (element.addEventListener) {
+        element.addEventListener(type, handler, false);
+      } else if (element.attachEvent) {
+        element.attachEvent("on"+type, handler);
+      } else {
+        element["on"+type] = handler;
+      }
+    }
+
+    init();
+    render();
+  </script>
+</body>
+</html>
