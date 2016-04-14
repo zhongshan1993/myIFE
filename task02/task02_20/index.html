@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度前端任务02_20</title>
+  <style type="text/css">
+    .display-box {
+      margin-top: 5px;
+    }
+    .display-box div{
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      background-color: red;
+      display: inline-block;
+      border-radius: 3px;
+      vertical-align: top;
+      margin-left: 4px;
+    }
+    .select {
+    	background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-box">
+    <textarea name="" id="input-value" cols="30" rows="5"></textarea>
+    <button id="right-in">右侧入</button>
+    <input type="text" id="match-input" >
+    <button id="match-button">匹配</button>
+  </div>
+  <div class="display-box" id="display-box">
+  </div>
+
+  <script>
+    var aQueue = [],
+    	wordArr = [],
+    	matchWord = '',
+        rightIn = document.getElementById('right-in'),
+        inputValue = document.getElementById('input-value'),
+        matchInput = document.getElementById('match-input'),
+        matchButton = document.getElementById('match-button'),
+        displayBox = document.getElementById('display-box');
+    // 渲染
+    function render() {
+      displayBox.innerHTML = "";
+      var res = '';
+      var resStr = '';
+      // for (var i=0,len=wordArr.length; i < len; i++) {
+      //   displayBox.innerHTML += "<div>"+wordArr[i]+"</div>";
+      // }
+      wordArr.map(function(elem, index) {
+      	res = elem.match(matchWord);
+      	resStr = elem.replace(res, '<span class="select">'+res+'</span>');
+      	displayBox.innerHTML += "<div>"+resStr+"</div>";
+      })
+    }
+    function init() {
+      
+      addEvent(rightIn, 'click', function() {
+        var val = inputValue.value.trim();
+        wordArr = val.split(/[^0-9a-zA-Z\u4e00-\u9fa5]+/).filter(function(index) {
+        	return index != '';
+        });
+        render(wordArr);
+      });
+      addEvent(matchButton, 'click', function() {
+      	matchWord = matchInput.value.trim();
+      	render();
+      })
+    }
+    function addEvent(element, type, handler) {
+      if (element.addEventListener) {
+        element.addEventListener(type, handler, false);
+      } else if (element.attachEvent) {
+        element.attachEvent("on"+type, handler);
+      } else {
+        element["on"+type] = handler;
+      }
+    }
+
+    init();
+    render();
+  </script>
+</body>
+</html>
