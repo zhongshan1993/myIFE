@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度前端任务02_21</title>
+  <style type="text/css">
+    body {
+      font-size: 18px;
+      font-family: 'arial';
+    }
+    .display-box {
+      margin-top: 5px;
+    }
+    .display-box div{
+      padding: 10px;
+      text-align: center;
+      color: #fff;
+      font-size: 18px;
+      background-color: red;
+      display: inline-block;
+      border-radius: 3px;
+      vertical-align: top;
+      margin-left: 4px;
+      position: relative;
+    }
+    .select {
+    	background-color: #ccc;
+    }
+    span.delete-btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      /* background-color: transparent; */
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="input-box" id="tag">
+    <label for="input-value">Tag:  </label><input type="text" name="" id="input-value">
+  </div>
+  <div class="display-box" id="display-box"></div>
+
+  <script>
+  // target解决
+    var wordArr = [],
+        inputValue = document.getElementById('input-value'),
+        displayBox = document.getElementById('display-box');
+        // displayElements = displayBox.getElementsByTagName('div');
+        // deleteBtns = displayBox.getElementsByTagName('span');
+    // 渲染
+    function render() {
+      displayBox.innerHTML = "";
+      wordArr.map(function(elem, index) {
+      	displayBox.innerHTML += '<div>'+elem+'<span class="delete-btn"></span></div>';
+      });
+      inputValue.value = "";
+
+      var displayElements = displayBox.getElementsByTagName('div');
+    }
+    function init() {
+      addEvent(inputValue, 'keydown', function(ev) {
+        var oEvent = ev || event;
+        var val = inputValue.value.trim();
+        if (oEvent.keyCode === 13) {
+          wordArr.push(val);
+          wordArr = unique(wordArr);
+          wordArr = limit(wordArr);
+          render();
+        }
+      });
+    }
+    function addEvent(element, type, handler) {
+      if (element.addEventListener) {
+        element.addEventListener(type, handler, false);
+      } else if (element.attachEvent) {
+        element.attachEvent("on"+type, handler);
+      } else {
+        element["on"+type] = handler;
+      }
+    }
+    // 数组去重
+    function unique(array) {
+      var n = [];
+      for (var i=0, len=array.length; i < len; i++) {
+        if (n.indexOf(array[i]) == -1) n.push(array[i]); 
+      }
+      return n;
+    }
+    // 数组长度限制
+    function limit(array) {
+      if (array.length > 10) {
+        array.shift();
+      }
+      return array;
+    }
+    init();
+    render();
+  </script>
+</body>
+</html>
