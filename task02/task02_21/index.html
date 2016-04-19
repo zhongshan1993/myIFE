@@ -11,29 +11,24 @@
     .display-box {
       margin-top: 5px;
     }
-    .display-box div{
+    .display-box div, .hobby-display div{
       padding: 10px;
       text-align: center;
       color: #fff;
       font-size: 18px;
-      background-color: red;
+      background-color: skyblue;
       display: inline-block;
       border-radius: 3px;
       vertical-align: top;
       margin-left: 4px;
       position: relative;
+      cursor: pointer;
     }
-    .select {
-    	background-color: #ccc;
+    .display-box .delete {
+      background-color: red;
     }
-    span.delete-btn {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      /* background-color: transparent; */
-      display: none;
+    #hobby-input {
+      vertical-align: bottom;
     }
   </style>
 </head>
@@ -42,35 +37,75 @@
     <label for="input-value">Tag:  </label><input type="text" name="" id="input-value">
   </div>
   <div class="display-box" id="display-box"></div>
-
+  <div class="hobby">
+    <textarea name="" id="hobby-input" cols="30" rows="10"></textarea>
+    <button id="hobby-submit">确认兴趣爱好</button>
+    <div class="hobby-display" id="hobby-display"></div>
+  </div>
   <script>
   // target解决
-    var wordArr = [],
+    var tagArr = [],
+        hobbyArr = [],
         inputValue = document.getElementById('input-value'),
+        hobbyDisplay = document.getElementById('hobby-display'),
+        hobbyInput = document.getElementById('hobby-input'),
+        hobbySubmit = document.getElementById('hobby-submit'),
+
         displayBox = document.getElementById('display-box');
         // displayElements = displayBox.getElementsByTagName('div');
         // deleteBtns = displayBox.getElementsByTagName('span');
     // 渲染
-    function render() {
-      displayBox.innerHTML = "";
+    function render(display, wordArr, input) {
+      display.innerHTML = "";
       wordArr.map(function(elem, index) {
-      	displayBox.innerHTML += '<div>'+elem+'<span class="delete-btn"></span></div>';
+      	display.innerHTML += '<div class="display-ele">'+elem+'</div>';
       });
-      inputValue.value = "";
-
-      var displayElements = displayBox.getElementsByTagName('div');
+      input.value = "";
     }
     function init() {
       addEvent(inputValue, 'keydown', function(ev) {
         var oEvent = ev || event;
         var val = inputValue.value.trim();
         if (oEvent.keyCode === 13) {
-          wordArr.push(val);
-          wordArr = unique(wordArr);
-          wordArr = limit(wordArr);
-          render();
+          tagArr.push(val);
+          tagArr = unique(tagArr);
+          tagArr = limit(tagArr);
+          render(displayBox, tagArr, inputValue);
         }
       });
+
+      addEvent(displayBox, 'mouseover', function(ev) {
+        var oEvent = ev || event;
+        if (oEvent.target.className == 'display-ele') {
+          oEvent.target.innerHTML = "点击删除 "+oEvent.target.innerHTML;
+          oEvent.target.className = oEvent.target.className + " delete";
+        }
+      });
+
+      addEvent(displayBox, 'mouseout', function(ev) {
+        var oEvent = ev || event;
+        if (oEvent.target.className == 'display-ele delete') {
+          oEvent.target.innerHTML = oEvent.target.innerHTML.split(/\s/)[1];
+          oEvent.target.className = oEvent.target.className.split(/\s/)[0];
+        }
+      });
+
+      addEvent(displayBox, 'click', function(ev) {
+        var oEvent = ev || event;
+        if (oEvent.target.className == 'display-ele delete') {
+          deleteArrElement(tagArr, oEvent.target.innerHTML.split(/\s/)[1]);
+          render(displayBox, tagArr, inputValue);
+        }
+      });
+
+      addEvent(hobbySubmit, 'click', function() {
+        var str = hobbyInput.value.trim();
+        hobbyArr = unique(hobbyArr.concat(str.split(/[\r，,、\s]/).filter(function(ele) {
+          return ele.trim();
+        })));
+        hobbyArr = limit(hobbyArr);
+        render(hobbyDisplay, hobbyArr, hobbyInput);
+      })
     }
     function addEvent(element, type, handler) {
       if (element.addEventListener) {
@@ -96,8 +131,15 @@
       }
       return array;
     }
+    function deleteArrElement(arr, value) {
+      var index = arr.indexOf(value);
+      if (index > -1) {
+        arr.splice(index, 1);
+      }
+      return arr;
+    }
     init();
-    render();
+    // render(displayBox, tagArr, inputValue);
   </script>
 </body>
 </html>
