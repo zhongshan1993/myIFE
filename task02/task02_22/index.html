@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度前端任务02_22</title>
+  <style type="text/css">
+    body {
+      font-size: 18px;
+      font-family: 'arial';
+    }
+    * {
+    	padding:0;
+    	margin: 0;
+    	box-sizing: border-box;
+    }
+    .root {
+    	display: flex;
+    	flex-direction: row;
+    	width: 730px;
+    	height: 240px;
+    	margin: 100px auto 30px;
+    	padding: 10px;
+    	border: 1px solid #000;
+    	border-radius:5px;
+    }
+    .root div {
+    	background-color: #fff;
+    	border: 1px solid #000;
+    	display: flex;
+    	flex-direction: row;
+    	border-radius:5px;
+    }
+    .child_1 {
+		margin: 5px;
+		width: 345px;
+		height: 210px;
+		padding: 10px;
+    }
+    .child_2 {
+		margin: 5px;
+		width: 152px;
+		height: 180px;
+		padding: 10px;
+    }
+    .child_3 {
+		margin: 5px;
+		width: 66px;
+		height: 150px;
+    }
+    .trigger {
+    	text-align: center;
+    }
+    .trigger > button {
+    	padding: 10px;
+		margin: 0 50px;
+    }
+  </style>
+</head>
+<body>
+  <div class="root">
+  	<div class="child_1">
+  		<div class="child_2">
+  			<div class="child_3"></div>
+  			<div class="child_3"></div>
+  		</div>
+  		<div class="child_2">
+  			<div class="child_3"></div>
+  			<div class="child_3"></div>
+  		</div>
+  	</div>
+  	<div class="child_1">
+  		<div class="child_2">
+  			<div class="child_3"></div>
+  			<div class="child_3"></div>
+  		</div>
+  		<div class="child_2">
+  			<div class="child_3"></div>
+  			<div class="child_3"></div>
+  		</div>
+  	</div>
+  </div>
+  <div class="trigger">
+  	<button class="pre">前序</button>
+  	<button class="in">中序</button>
+  	<button class="post">后序</button>
+  </div>
+  <script>
+  	(function() {
+  		var treeTraverse = new TreeTraverse(),
+  			preBtn = document.querySelector('.pre'),
+  			inBtn = document.querySelector('.in'),
+  			postBtn = document.querySelector('.post'),
+  			root = document.querySelector('.root');
+  		preBtn.addEventListener('click', function() {
+  			treeTraverse.preOrder(root);
+  			treeTraverse.animation();
+  		}, false);
+  		inBtn.addEventListener('click', function() {
+  			treeTraverse.inOrder(root);
+  			treeTraverse.animation();
+  		}, false);
+  		postBtn.addEventListener('click', function() {
+  			treeTraverse.postOrder(root);
+  			treeTraverse.animation();
+  		}, false);
+  	})();
+  	// 遍历一棵树
+  	function TreeTraverse() {
+  		this.stack = [];
+  		this.isTraverse = false;
+  	}
+  	// 前序遍历
+  	TreeTraverse.prototype.preOrder = function(node) {
+  		this.stack.push(node);
+  		if (node.firstElementChild) {
+  			this.preOrder(node.firstElementChild);
+  		}
+  		if (node.lastElementChild) {
+  			this.preOrder(node.lastElementChild);
+  		}
+  	}
+  	// 中序遍历
+  	TreeTraverse.prototype.inOrder = function(node) {
+  		if (node.firstElementChild) {
+  			this.inOrder(node.firstElementChild);
+  		}
+  		this.stack.push(node);
+  		if (node.lastElementChild) {
+  			this.inOrder(node.lastElementChild);
+  		}
+  	}
+  	// 后序遍历
+  	TreeTraverse.prototype.postOrder = function(node) {
+  		if (node.firstElementChild) {
+  			this.postOrder(node.firstElementChild);
+  		}
+  		if (node.lastElementChild) {
+  			this.postOrder(node.lastElementChild);
+  		}
+  		this.stack.push(node);
+  	}
+
+ 	// 动画
+ 	TreeTraverse.prototype.animation = function() {
+ 		var stack = this.stack,
+ 		    speed = 200,
+ 		    i = 0,
+ 		    self = this,
+ 		    timer = null;
+ 		this.stack = [];
+ 		if (!self.isTraverse) {
+ 			self.isTraverse = true;
+ 			stack[i].style.backgroundColor = 'red';
+ 			timer = setInterval(function() {
+ 				if (i == (stack.length-1)) {
+ 					stack[i].style.backgroundColor = '#fff';
+ 					self.isTraverse = false;
+ 					clearInterval(timer);
+ 				} else {
+ 					i++;
+ 					stack[i-1].style.backgroundColor = '#fff';
+ 					stack[i].style.backgroundColor = 'red';
+ 				}
+ 			}, speed);
+ 		}
+
+ 	}
+  </script>
+</body>
+</html>
