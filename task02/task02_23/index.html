@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度前端任务02_23</title>
+  <style type="text/css">
+    body {
+      font-size: 18px;
+      font-family: 'arial';
+    }
+    * {
+    	padding:0;
+    	margin: 0;
+    	box-sizing: border-box;
+    }
+    .root {
+    	display: flex;
+    	flex-direction: row;
+    	height: 240px;
+    	margin: 100px 100px 30px;
+    	padding: 10px;
+    	border: 1px solid #000;
+    	border-radius:5px;
+    }
+    .root div {
+    	background-color: #fff;
+    	border: 1px solid #000;
+    	display: flex;
+    	flex-direction: row;
+    	border-radius:5px;
+    	margin: 5px;
+    	flex-grow: 1;
+    }
+    .root .res {
+    	background-color: #ccc;
+    }
+    .trigger {
+    	text-align: left;
+	    margin-left: 100px;
+	    margin-right: 100px;
+    }
+    .trigger  button {
+    	padding: 10px;
+		margin-left: 40px;
+    }
+    .opration span {
+    	margin-right: 10px;
+    }
+    .opration input {
+    	height: 39px;
+    }
+    .opration {
+    	margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="root">aaa
+  	<div class="child_1">bbb
+  		<div class="child_2">ccc
+  			<div class="child_3">ddd</div>
+  			<div class="child_3">eee</div>
+  		</div>
+  		<div class="child_2">fff
+  			<div class="child_3">ggg</div>
+  			<div class="child_3">hhh</div>
+  			<div class="child_3">yyy</div>
+  			<div class="child_3">www</div>
+  		</div>
+  	</div>
+  	<div class="child_1">iii
+  		<div class="child_2">jjj
+  			<div class="child_3">kkk</div>
+  			<div class="child_3">lll</div>
+  		</div>
+  		<div class="child_2">mmm
+  			<div class="child_3">nnn</div>
+  			<div class="child_3">ooo</div>
+  		</div>
+  		<div class="child_2">123
+  			<div class="child_3">124</div>
+  			<div class="child_3">kkk</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="trigger">
+  	<div class="opration">
+  		<span>遍历</span>
+  		<button class="depth-traversal">深度优先遍历</button>
+  		<button class="breadth-traversal">广度优先遍历</button>
+  	</div>
+  	<div class="opration">
+  		<span>查询</span>
+  		<input type="text" id="search-value" placeholder="在此输入要查询的节点">
+  		<button class="depth-search">深度优先查询</button>
+  		<button class="breadth-search">广度优先查询</button>
+  	</div>
+  </div>
+  <script>
+  	(function() {
+  		var treeTraverse = new TreeTraverse(),
+  			depthBtn = document.querySelector('.depth-traversal'),
+  			breadthBtn = document.querySelector('.breadth-traversal'),
+  			depthSearch = document.querySelector('.depth-search'),
+  			breadthSearch = document.querySelector('.breadth-search'),
+  			searchInput = document.querySelector('#search-value'),
+  			root = document.querySelector('.root');
+
+  		depthBtn.addEventListener('click', function() {
+  			treeTraverse.depthTraverse(root);
+  			treeTraverse.animation();
+  		}, false);
+  		breadthBtn.addEventListener('click', function() {
+  			treeTraverse.breadthTraverse(root);
+  			treeTraverse.animation();
+  		}, false);
+
+  		depthSearch.addEventListener('click', function() {
+  			treeTraverse.depthTraverse(root);
+  			treeTraverse.animation(searchInput.value.trim());
+  		}, false);
+  		breadthSearch.addEventListener('click', function() {
+  			treeTraverse.breadthTraverse(root);
+  			treeTraverse.animation(searchInput.value.trim());
+  		}, false);
+  	})();
+  	// 遍历一棵树
+  	function TreeTraverse() {
+  		this.stack = [];
+  		this.isTraverse = false;
+  	}
+  	// 深度优先遍历
+  	TreeTraverse.prototype.depthTraverse = function(node) {
+  		var stack = [];
+  		(function recurse(currentNode) {
+  			stack.push(currentNode);
+  			for (var i = 0; i < currentNode.children.length; i++) {
+  				recurse(currentNode.children[i]);
+  			}
+  		})(node);
+  		this.stack = stack;
+  	}
+  	// 广度优先遍历
+  	TreeTraverse.prototype.breadthTraverse = function(node) {
+  		var currentNode = node,
+  			queue = [];
+  		this.stack = [];
+  		this.stack.push(currentNode);
+  		while(currentNode) {
+  			for (var i=0,len=currentNode.children.length; i < len; i++) {
+  				queue.push(currentNode.children[i]);
+  			}
+  			currentNode = queue.shift();
+  			if (!currentNode) break;
+  			this.stack.push(currentNode);
+  		}
+  		
+  	}
+
+  	TreeTraverse.prototype.clearBGC = function() {
+  		var stack = this.stack;
+  		stack.forEach(function(ele) {
+  			ele.style.backgroundColor = '#fff';
+  		})
+  	}
+ 	// 动画
+ 	TreeTraverse.prototype.animation = function() {
+ 		var stack = this.stack,
+	 		keyword = arguments[0] ? arguments[0] : '',
+ 		    speed = 200,
+ 		    i = 0,
+ 		    self = this,
+ 		    flag = false,
+ 		    timer = null;
+
+ 		// 清除背景颜色
+ 		this.clearBGC();
+ 		this.stack = [];
+ 		if (!self.isTraverse) {
+ 			self.isTraverse = true;
+ 			stack[i].style.backgroundColor = 'red';
+ 			timer = setInterval(function() {
+ 				if (stack[i].innerText.split(/\n/)[0] == keyword) {
+ 					flag = true;
+ 				} else {
+ 					flag = false;
+ 				}
+ 				if (i == (stack.length-1)) {
+ 					if (!flag) stack[i].style.backgroundColor = '#fff';
+ 					else stack[i].style.backgroundColor = '#ccc';
+ 					self.isTraverse = false;
+ 					clearInterval(timer);
+ 				} else {
+ 					i++;
+ 					if (!flag) stack[i-1].style.backgroundColor = '#fff';
+ 					else stack[i-1].style.backgroundColor = '#ccc';
+ 					stack[i].style.backgroundColor = 'red';
+ 				}
+ 				
+ 				
+ 			}, speed);
+ 		}
+
+ 	}
+  </script>
+</body>
+</html>
