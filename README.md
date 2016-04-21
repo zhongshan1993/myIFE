@@ -52,3 +52,21 @@
 17. 任务十七：零基础JavaScript编码（五）
     代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_17](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_17);
     DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_17/](http://zhongshan1993.github.io/myIFE/task02/task02_17/)  
+18. 任务十八：基础JavaScript练习（一）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_18](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_18);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_18/](http://zhongshan1993.github.io/myIFE/task02/task02_18/)  
+19. 任务十九：基础JavaScript练习（二）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_19](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_19);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_19/](http://zhongshan1993.github.io/myIFE/task02/task02_19/)  
+20. 任务二十：基础JavaScript练习（三）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_20](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_20);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_20/](http://zhongshan1993.github.io/myIFE/task02/task02_20/)  
+21. 任务二十一：基础JavaScript练习（四）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_21](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_21);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_21/](http://zhongshan1993.github.io/myIFE/task02/task02_21/)  
+22. 任务二十二：JavaScript和树（一）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_22](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_22);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_22/](http://zhongshan1993.github.io/myIFE/task02/task02_22/)  
+23. 任务二十三：JavaScript和树（二）
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_23](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_23);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_23/](http://zhongshan1993.github.io/myIFE/task02/task02_23/)  
