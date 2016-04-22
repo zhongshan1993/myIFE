@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度前端任务02_29</title>
+  <style type="text/css">
+    body {
+      font-size: 18px;
+      font-family: "微软雅黑";
+    }
+    * {
+    	padding:0;
+    	margin: 0;
+    	box-sizing: border-box;
+    }
+    form {
+      margin: 20px auto;
+      text-align: center;
+    }
+    .username {
+      height: 40px;
+    vertical-align: top;
+    border-radius: 4px;
+    border: 2px solid rgb(167, 167, 167);
+    outline: none;
+    padding: 0 10px;
+    width: 230px;
+    color: rgb(167, 167, 167);
+    font-size: 14px;
+    }
+    form label {
+      margin-right: 10px;
+    vertical-align: top;
+    height: 40px;
+    line-height: 40px;
+    }
+    .tip {
+      text-align: left;
+      color: rgb(167, 167, 167);
+      font-size: 14px;
+    }
+    .error {
+      color: rgb(221, 2, 25);
+      border-color: rgb(221, 2, 25);
+    }
+    .right {
+      color: rgb(75, 177, 49);
+      border-color: rgb(75, 177, 49);
+    }
+    .input-box {
+      display: inline-block;
+      vertical-align: top;
+    }
+    .validate {
+      vertical-align: top;
+    margin-left: 10px;
+    height: 40px;
+    background-color: rgb(47,121,186);
+    width: 60px;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    font-family: '微软雅黑';
+    border-radius: 4px;
+    outline: none;
+    }
+  </style>
+</head>
+<body>
+  <form action="#" method="">
+    <label for="username">名称</label>
+    <div class="input-box">
+      <input type="text" id="username" class="username">
+      <p class="tip" id="tip">必填，长度为4~16个字符</p>
+    </div>
+    <input type="button" value="验证" class="validate" id="valid-button">
+  </form>
+  <script>
+  	(function() {
+      var usernameInput = document.querySelector('#username'),
+          tip = document.querySelector('#tip'),
+          validBtn = document.querySelector('#valid-button');
+      validBtn.addEventListener('click', function() {
+        var val = usernameInput.value;
+            // isValid = ;
+        if ((val.length >= 4) && (val.length <= 16)) {
+          usernameInput.className = usernameInput.className.split(/\s/)[0] + ' right';
+          tip.className = tip.className.split(/\s/)[0] + ' right';
+          tip.innerHTML = "姓名格式正确";
+        } else {
+          usernameInput.className = usernameInput.className.split(/\s/)[0] + ' error';
+          tip.className = tip.className.split(/\s/)[0] + ' error';
+          if (!val.length) {
+            tip.innerHTML = "姓名不能为空";
+          } else {
+            tip.innerHTML = "长度必须为4~16个字符";
+          }
+        }
+      }, false);
+
+    })();
+  </script>
+</body>
+</html>

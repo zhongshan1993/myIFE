@@ -16,6 +16,7 @@
     .root {
     	display: flex;
     	flex-direction: row;
+    	/* width: 800px; */
     	height: 240px;
     	margin: 100px 100px 30px;
     	padding: 10px;
@@ -30,9 +31,28 @@
     	border-radius:5px;
     	margin: 5px;
     	flex-grow: 1;
+    	/* justify-content: center; */
+    	/* align-items: center; */
     }
+    /* .root .searching {
+    	background-color: red;
+    } */
     .root .res {
     	background-color: #ccc;
+    }
+    .child_1 {
+		/* width: 345px; */
+		/* height: 210px; */
+		/* padding: 10px; */
+    }
+    .child_2 {
+		/* width: 152px; */
+		/* height: 180px; */
+		/* padding: 10px; */
+    }
+    .child_3 {
+		/* width: 66px; */
+		/* height: 150px; */
     }
     .trigger {
     	text-align: left;
@@ -95,8 +115,16 @@
   		<button class="depth-search">深度优先查询</button>
   		<button class="breadth-search">广度优先查询</button>
   	</div>
+  	<div class="opration">
+  		<span>添加</span>
+  		<input type="text" id="add-value" placeholder="在此输入要删除或添加的节点">
+  		<button class="add">添加</button>
+  		<button class="delete">删除</button>
+  	</div>
+  	<p>说明：添加、删除节点前需要先选中节点（可多选）</p>
   </div>
   <script>
+  	// console.log(document.querySelector('.root').innerText.split(/\n/));
   	(function() {
   		var treeTraverse = new TreeTraverse(),
   			depthBtn = document.querySelector('.depth-traversal'),
@@ -150,7 +178,6 @@
   			for (var i=0,len=currentNode.children.length; i < len; i++) {
   				queue.push(currentNode.children[i]);
   			}
-  			// queue =queue.concat([].splice.call(currentNode.children, 0));
   			currentNode = queue.shift();
   			if (!currentNode) break;
   			this.stack.push(currentNode);
@@ -182,6 +209,7 @@
  			stack[i].style.backgroundColor = 'red';
  			timer = setInterval(function() {
  				if (stack[i].innerText.split(/\n/)[0] == keyword) {
+ 					// stack[i].className = 'res';
  					flag = true;
  				} else {
  					flag = false;
