@@ -70,3 +70,7 @@
 23. 任务二十三：JavaScript和树（二）
     代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_23](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_23);
     DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_23/](http://zhongshan1993.github.io/myIFE/task02/task02_23/)  
+
+29. 任务二十九：表单（一）单个表单项的检验
+    代码地址：[https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_29](https://github.com/zhongshan1993/myIFE/tree/gh-pages/task02/task02_29);
+    DEMO：[http://zhongshan1993.github.io/myIFE/task02/task02_29/](http://zhongshan1993.github.io/myIFE/task02/task02_29/)
