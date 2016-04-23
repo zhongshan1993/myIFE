@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>百度前端任务02_23</title>
+  <title>百度前端任务02_24</title>
   <style type="text/css">
     body {
       font-size: 18px;
@@ -31,28 +31,9 @@
     	border-radius:5px;
     	margin: 5px;
     	flex-grow: 1;
-    	/* justify-content: center; */
-    	/* align-items: center; */
     }
-    /* .root .searching {
-    	background-color: red;
-    } */
     .root .res {
     	background-color: #ccc;
-    }
-    .child_1 {
-		/* width: 345px; */
-		/* height: 210px; */
-		/* padding: 10px; */
-    }
-    .child_2 {
-		/* width: 152px; */
-		/* height: 180px; */
-		/* padding: 10px; */
-    }
-    .child_3 {
-		/* width: 66px; */
-		/* height: 150px; */
     }
     .trigger {
     	text-align: left;
@@ -76,30 +57,30 @@
 </head>
 <body>
   <div class="root">aaa
-  	<div class="child_1">bbb
-  		<div class="child_2">ccc
-  			<div class="child_3">ddd</div>
-  			<div class="child_3">eee</div>
+  	<div>bbb
+  		<div>ccc
+  			<div>ddd</div>
+  			<div>eee</div>
   		</div>
-  		<div class="child_2">fff
-  			<div class="child_3">ggg</div>
-  			<div class="child_3">hhh</div>
-  			<div class="child_3">yyy</div>
-  			<div class="child_3">www</div>
+  		<div>fff
+  			<div>ggg</div>
+  			<div>hhh</div>
+  			<div>yyy</div>
+  			<div>www</div>
   		</div>
   	</div>
-  	<div class="child_1">iii
-  		<div class="child_2">jjj
-  			<div class="child_3">kkk</div>
-  			<div class="child_3">lll</div>
+  	<div>iii
+  		<div>jjj
+  			<div>kkk</div>
+  			<div>lll</div>
   		</div>
-  		<div class="child_2">mmm
-  			<div class="child_3">nnn</div>
-  			<div class="child_3">ooo</div>
+  		<div>mmm
+  			<div>nnn</div>
+  			<div>ooo</div>
   		</div>
-  		<div class="child_2">123
-  			<div class="child_3">124</div>
-  			<div class="child_3">kkk</div>
+  		<div>123
+  			<div>124</div>
+  			<div>kkk</div>
   		</div>
   	</div>
   </div>
@@ -124,15 +105,18 @@
   	<p>说明：添加、删除节点前需要先选中节点（可多选）</p>
   </div>
   <script>
-  	// console.log(document.querySelector('.root').innerText.split(/\n/));
   	(function() {
   		var treeTraverse = new TreeTraverse(),
   			depthBtn = document.querySelector('.depth-traversal'),
   			breadthBtn = document.querySelector('.breadth-traversal'),
   			depthSearch = document.querySelector('.depth-search'),
   			breadthSearch = document.querySelector('.breadth-search'),
-  			searchInput = document.querySelector('#search-value'),
-  			root = document.querySelector('.root');
+        searchInput = document.querySelector('#search-value'),
+        addInput = document.querySelector('#add-value'),
+        addBtn = document.querySelector('.add'),
+  			delBtn = document.querySelector('.delete'),
+  			root = document.querySelector('.root'),
+        targets = [];
 
   		depthBtn.addEventListener('click', function() {
   			treeTraverse.depthTraverse(root);
@@ -151,6 +135,30 @@
   			treeTraverse.breadthTraverse(root);
   			treeTraverse.animation(searchInput.value.trim());
   		}, false);
+
+      root.addEventListener('click', function(ev) {
+        var _target = ev.target;
+        _target.style.backgroundColor = 'skyblue';
+        targets.push(_target);
+      });
+      // 删除节点
+      delBtn.addEventListener('click', function() {
+        targets.forEach(function(ele) {
+          ele.parentNode.removeChild(ele);
+        });
+        targets = [];
+      });
+      // 添加节点
+      addBtn.addEventListener('click', function() {
+        var _text = addInput.value,
+            _child = document.createElement('div');
+        _child.innerText = _text;
+        targets.forEach(function(ele) {
+          ele.appendChild(_child);
+          ele.style.backgroundColor = '#fff';
+        });
+        targets = [];
+      })
   	})();
   	// 遍历一棵树
   	function TreeTraverse() {
