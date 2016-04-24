@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>百度前端任务02_25</title>
+  <style type="text/css">
+    body {
+      font-size: 18px;
+      font-family: 'arial';
+    }
+    * {
+    	padding:0;
+    	margin: 0;
+    	box-sizing: border-box;
+    }
+    .root {
+    	border: 1px solid #000;
+    	margin: 20px 100px 20px 100px;
+    }
+
+    .root div {
+    	margin: 20px;
+    	border: 1px solid #000;
+    	display: none;
+    }
+    .root span {
+
+    }
+    .root i {
+    	content: '+';
+    	margin: 0 10px;
+	    display: inline-block;
+	    width: 20px;
+	    height: 20px;
+	    text-align: center;
+	    color: skyblue;
+	    font-size: 18px;
+	    cursor: pointer;
+    }
+    .root .res {
+
+    }
+    .trigger {
+    	text-align: left;
+	    margin-left: 100px;
+	    margin-right: 100px;
+    }
+    .trigger  button {
+    	padding: 10px;
+		margin-left: 40px;
+    }
+    .opration span {
+    	margin-right: 10px;
+    }
+    .opration input {
+    	height: 39px;
+    }
+    .opration {
+    	margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="root"><i>+</i>根目录
+  	<div><i>+</i>bbb
+  		<div><i>+</i>ccc
+  			<div><i>+</i>ddd</div>
+  			<div><i>+</i>eee</div>
+  		</div>
+  		<div><i>+</i>fff
+  			<div><i>+</i>ggg</div>
+  			<div><i>+</i>hhh</div>
+  			<div><i>+</i>iii</div>
+  			<div><i>+</i>jjj</div>
+  		</div>
+  	</div>
+  </div>
+  <div class="trigger">
+  	<div class="opration">
+  		<span>遍历</span>
+  		<button class="depth-traversal">深度优先遍历</button>
+  		<button class="breadth-traversal">广度优先遍历</button>
+  	</div>
+  	<div class="opration">
+  		<span>查询</span>
+  		<input type="text" id="search-value" placeholder="在此输入要查询的节点">
+  		<button class="depth-search">深度优先查询</button>
+  		<button class="breadth-search">广度优先查询</button>
+  	</div>
+  	<div class="opration">
+  		<span>添加</span>
+  		<input type="text" id="add-value" placeholder="在此输入要删除或添加的节点">
+  		<button class="add">添加</button>
+  		<button class="delete">删除</button>
+  	</div>
+  	<p>说明：添加、删除节点前需要先选中节点（可多选）</p>
+  </div>
+  <script>
+  	window.onload = function() {
+  		var treeTraverse = new TreeTraverse(),
+  			depthBtn = document.querySelector('.depth-traversal'),
+  			breadthBtn = document.querySelector('.breadth-traversal'),
+  			depthSearch = document.querySelector('.depth-search'),
+  			breadthSearch = document.querySelector('.breadth-search'),
+	        searchInput = document.querySelector('#search-value'),
+	        addInput = document.querySelector('#add-value'),
+	        addBtn = document.querySelector('.add'),
+  			delBtn = document.querySelector('.delete'),
+  			root = document.querySelector('.root'),
+       		targets = [];
+
+  		depthBtn.addEventListener('click', function() {
+  			treeTraverse.depthTraverse(root);
+  			treeTraverse.animation();
+  		}, false);
+  		breadthBtn.addEventListener('click', function() {
+  			treeTraverse.breadthTraverse(root);
+  			treeTraverse.animation();
+  		}, false);
+
+  		depthSearch.addEventListener('click', function() {
+  			treeTraverse.depthTraverse(root);
+  			treeTraverse.animation(searchInput.value.trim());
+  		}, false);
+  		breadthSearch.addEventListener('click', function() {
+  			treeTraverse.breadthTraverse(root);
+  			treeTraverse.animation(searchInput.value.trim());
+  		}, false);
+
+		root.addEventListener('click', function(ev) {
+			var _target = ev.target;
+			if (_target.tagName != 'I') {
+				_target.style.backgroundColor = 'skyblue';
+				targets.push(_target);
+			} else {
+				var _children = _target.parentNode.children;
+				if (_target.innerHTML == '+') {
+					for (var i = 1; i < _children.length; i++) {
+						_children[i].style.display = 'block';
+						if (_children[i].children.length == 1) {
+							_children[i].children[0].innerHTML = '-'
+						}
+						_target.innerHTML = '-';
+					}
+				} else {
+					for (var i = 1; i < _children.length; i++) {
+						_children[i].style.display = 'none';
+						_target.innerHTML = '+';
+					}
+				}
+			}
+		});
+		// 删除节点
+		delBtn.addEventListener('click', function() {
+			targets.forEach(function(ele) {
+			  ele.parentNode.removeChild(ele);
+			});
+			targets = [];
+		});
+		// 添加节点
+		addBtn.addEventListener('click', function() {
+			var _text = addInput.value,
+			    _child = document.createElement('div');
+			_child.innerHTML = '<i>-</i>'+_text;
+			_child.style.display = 'block';
+			targets.forEach(function(ele) {
+			  ele.appendChild(_child);
+			  ele.style.backgroundColor = '#fff';
+			});
+			targets = [];
+		})
+  	};
+  	// 遍历一棵树
+  	function TreeTraverse() {
+  		this.stack = [];
+  		this.isTraverse = false;
+  	}
+  	// 深度优先遍历
+  	TreeTraverse.prototype.depthTraverse = function(node) {
+  		var stack = [];
+  		(function recurse(currentNode) {
+  			if (currentNode.tagName == 'DIV') {
+  				stack.push(currentNode);
+	  			for (var i = 0; i < currentNode.children.length; i++) {
+	  				recurse(currentNode.children[i]);
+	  			}
+  			}
+  		})(node);
+  		this.stack = stack;
+  	}
+  	// 广度优先遍历
+  	TreeTraverse.prototype.breadthTraverse = function(node) {
+  		var currentNode = node,
+  			queue = [];
+  		this.stack = [];
+  		this.stack.push(currentNode);
+  		while(currentNode) {
+  			for (var i=0,len=currentNode.children.length; i < len; i++) {
+  				if (currentNode.children[i].tagName == 'DIV') queue.push(currentNode.children[i]);
+  			}
+  			currentNode = queue.shift();
+  			if (!currentNode) break;
+  			this.stack.push(currentNode);
+  		}
+  		
+  	}
+
+  	TreeTraverse.prototype.init = function(node) {
+  		// var _ita = node.getElementsByTagName('i');
+  		// for (var i = 1; i < _ita.length; i++) {
+  		// 	_ita[i].innerHTML = '+';
+  		// 	_ita[i].parentNode.style.display = 'none';
+  		// }
+  	}
+
+  	TreeTraverse.prototype.clearBGC = function() {
+  		var stack = this.stack;
+  		stack.forEach(function(ele) {
+  			ele.style.backgroundColor = '#fff';
+  		})
+  	}
+ 	// 动画
+ 	TreeTraverse.prototype.animation = function() {
+ 		var stack = this.stack,
+	 		keyword = arguments[0] ? arguments[0] : '',
+ 		    speed = 200,
+ 		    i = 0,
+ 		    self = this,
+ 		    flag = false,
+ 		    timer = null;
+
+ 		// 清除背景颜色
+ 		this.clearBGC();
+ 		this.stack = [];
+ 		if (!self.isTraverse) {
+ 			self.isTraverse = true;
+ 			stack[i].style.backgroundColor = 'red';
+ 			timer = setInterval(function() {
+ 				if (stack[i].innerText.split(/\n/)[0].split(/[\+|\-]/)[1] == keyword) {
+ 					// stack[i].className = 'res';
+ 					flag = true;
+ 					for (var j=i; j>0; j--) {
+ 						stack[j].style.display = 'block';
+ 					}
+ 				} else {
+ 					flag = false;
+ 				}
+ 				if (i == (stack.length-1)) {
+ 					if (!flag) stack[i].style.backgroundColor = '#fff';
+ 					else stack[i].style.backgroundColor = '#ccc';
+ 					self.isTraverse = false;
+ 					clearInterval(timer);
+ 				} else {
+ 					i++;
+ 					if (!flag) stack[i-1].style.backgroundColor = '#fff';
+ 					else stack[i-1].style.backgroundColor = '#ccc';
+ 					stack[i].style.backgroundColor = 'red';
+ 				}
+ 				
+ 				
+ 			}, speed);
+ 		}
+
+ 	}
+  </script>
+</body>
+</html>
