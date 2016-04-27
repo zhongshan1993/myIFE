@@ -15,6 +15,7 @@ function Window() {
 		hasMask: true,
 		isDraggable: true,
 	};
+	this.mask = document.querySelector('.window_mask');
 	this.window  = document.querySelector('.window');
 	this.windowHeader = this.window.querySelector('.window_header');
 }
@@ -42,23 +43,16 @@ Window.prototype = {
 					var oEvent = ev || event,
 						theLeft = oEvent.clientX - disX,
 						theTop = oEvent.clientY - disY;
-					// 禁止用户从浏览器左框拖出
-					if (theLeft < 0) {
-						theLeft = 0;
-					}
-					if (theLeft > document.documentElement.clientWidth-
-						that.window.offsetWidth) {
-						theLeft = document.documentElement.clientWidth-
-						that.window.offsetWidth;
-					}
-					if (theTop < 0) {
-						theTop = 0;
-					}
-					if (theTop > document.documentElement.clientHeight-
-						that.window.offsetHeight) {
-						theTop = document.documentElement.clientHeight-
-						that.window.offsetHeight;
-					}
+
+					theLeft = theLeft < 0 ? 0 : theLeft;
+					theLeft = theLeft > (document.documentElement.clientWidth-
+						that.window.offsetWidth) ? (document.documentElement.clientWidth-
+						that.window.offsetWidth) : theLeft;
+					theTop = theTop < 0 ? 0 : theTop;
+					theTop = (theTop > document.documentElement.clientHeight-
+						that.window.offsetHeight)? (document.documentElement.clientHeight-
+						that.window.offsetHeight) : theTop;
+						
 					document.title = theLeft + '|' + theTop;
 					that.window.style.left = theLeft + 'px';
 					that.window.style.top = theTop + 'px';
@@ -70,10 +64,18 @@ Window.prototype = {
 
 		}
 	},
+	_cancel: function() {
+		var that = this;
+		this.mask.addEventListener('click', function() {
+			removeClass(that.window, 'dis_block');
+			removeClass(this, 'dis_block');
+		}, false);
+	},
 	alert: function(cfg) {
 		extend(this.cfg, cfg);
 		this._renderUI();
 		this._syncUI();
+		this._cancel();
 	}
 }
 
@@ -84,4 +86,12 @@ function extend(primaryObj, newObj) {
 		}
 	}
 	return primaryObj;
+}
+function removeClass(obj, className) {
+	var classArr = obj.className.split(/\s+/),
+		index = classArr.indexOf(className);
+	if (index != -1) {
+		classArr.splice(index, 1);
+	}
+	obj.className = classArr.join(' ');
 }

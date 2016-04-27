@@ -1,0 +1,57 @@
+html, body {
+	font-family: 'Microsoft YaHei';
+}
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+.score_table {
+	text-align: center;
+	margin: 20px auto;
+	width: 500px;
+	border-bottom: 2px solid #ddd;
+	border-right: 2px solid #ddd;
+}
+.score_table tr{
+	
+
+}
+.score_table td{
+	color: #444;
+	padding: 8px 0;
+
+}
+.score_table td, .score_table th {
+	border-left: 2px solid #ddd;
+	border-top: 2px solid #ddd;
+}
+.score_table th{
+	color: #fff;
+	background-color: #444;
+	font-weight: normal;
+	padding: 8px 0;
+	position: relative;
+}
+.score_table .ascend_btn, .score_table .descend_btn{
+	content: '';
+	position: absolute;
+	display: block;
+	width: 0;
+	height: 0;
+	box-sizing: content-box;
+	border: 5px solid transparent;
+	cursor: pointer;
+}
+.score_table .ascend_btn {
+	border-bottom-color: #fff;
+	border-bottom-width: 7px;
+	top: 10%;
+    right: 5%;
+}
+.score_table .descend_btn{
+	border-top-color: #fff;
+	border-top-width: 7px;
+	bottom: 10%;
+    right: 5%;
+}
